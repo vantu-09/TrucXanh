@@ -1,0 +1,124 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Trúc xanh</title>
+        <link rel="stylesheet" href="style.css">
+  
+        <script src="game.js"></script>
+  
+
+    </head>
+    <body>
+        <div class = "main">
+            <div class = "head">
+            T R Ú C X A N H
+            </div>
+
+        <div class = "body">
+            <button id = "level" onclick="on_level_menu()">LEVEL</button>
+                    <div id = "level_menu">
+                    <button id = "bt1" class = "bt" onclick="level1()" >LEVEL 1</button>
+                    <button id = "bt2" class = "bt"  onclick="level2()" >LEVEL 2</button>
+                    <button id = "bt3" class = "bt"  onclick="level3()" >LEVEL 3</button>
+                    <button id = "bt4" class = "bt" onclick="level4()" >LEVEL 4</button>
+                    <button id = "bt5" class = "bt" onclick="level5()" >LEVEL 5</button>
+                    <button id = "bt6" class = "bt"  onclick="level6()" >LEVEL 6</button>
+                    <button id = "bt7" class = "bt" onclick="level7()" >LEVEL 7 </button>
+                    <button id = "bt8" class = "bt" onclick="level8()" >LEVEL 8</button>
+                    <button id = "bt9" class = "bt" onclick="level9()" >LEVEL 9</button>
+                    <button id = "bt10" class = "bt" onclick="level10()" >LEVEL 10</button>
+                    <button id = "exit" onclick="of_level_menu()" >Thoát</button>
+                    </div>
+            <button id = "custome" onclick="on_custome_menu()">CUSTOM</button>
+                        <div id = "custome_menu">
+                            <div class = "select_group">
+                            <label for="">Số lượng hình ảnh ( Chọn 1 trong 2): </label><br>
+                            <select  id="images">
+                                <option value="0">0</option>
+                                <option value="4">4</option>
+                                <option value="16">16</option>
+                                <option value="36">36</option>
+                            </select>
+                            </div>
+
+                            <div class = "select_group">
+                            <label for="">Số hình theo chiều dọc: </label><br>
+                            <select id="image_doc">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                            </select>
+                            </div>
+
+                            <div class= "select_group">
+                            <label for="">Số hình theo chiều ngang: </label><br>
+                            <select id="image_ngang">
+                                <option value="0">0</option>
+                                <option value="2">2</option>
+                                <option value="4">4</option>
+                                <option value="6">6</option>
+                                <option value="8">8</option>
+                                <option value="10">10</option>
+                                <option value="12">12</option>
+                            </select>
+                            </div>
+
+                            <div class = "select_group">
+                                <label>Màu nền ô:</label>
+                                <input type="color" class = "choose_color" id = "mauNen">
+
+                                <label>Màu viền ô:</label>
+                                <input type="color" class = "choose_color" id = "mauVien" >
+                            </div>
+                            <div class = "select_group">
+
+                        
+                            <span>Thời gian</span>
+                            <select id="time">
+                                <option value="300">5 Phút</option>
+                                <option value="480">8 Phút</option>
+                                <option value="600  ">10 phút</option>
+                            </select>
+                                </div>
+                            <button class ="custome_button" onclick="of_custome_menu()">Thoát</button>
+                            
+
+                            <button class ="custome_button" type="submit" onclick="batDauChoi()">Bắt đầu chơi</button>
+
+                        </div>
+        </div>
+
+        <div class = "rank">
+                    <table id = "table_rank">
+            <tr id = "name">
+                <td id = "main_name">Tên</td>
+                
+
+            </tr>
+
+            <tr id = "point">
+                <td id = "main_point">Điểm</td>
+                
+            </tr>
+
+            <tr id = "thu_tu">
+                <td id = "main_thu_tu">Xếp hạng</td>
+                
+
+            </tr>
+
+            </table>
+        </div>  
+    </div>
+
+        
+
+    </body>
+    </html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trúc xanh</title>
+  <style>
+    body {
+      background-image: linear-gradient(rgba(9, 6, 39, 0.375)),url("images/backgroundtrucxdanh.png");
+
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 30px;
+      font-size: 20px;
+    }
+    
+
+    h1 {
+      color:  lightgreen;
+      font-size: 10vh;
+    }
+
+    input, button {
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      background-color: #a5d6a7;
+      padding: 8px;
+      margin: 5px;
+      border-radius: 4px;
+    }
+
+    #luuButton {
+      display: none;
+      margin-top: 10px;
+    }
+
+    #diemDaChoi {
+      font-weight: bold;
+      color: #2e7d32;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎋 T R Ú C X A N H 🎋</h1>
+
+  <p style="color: whitesmoke;">Nhập tên của bạn để bắt đầu chơi:</p>
+  <input type="text" id="tenNguoiChoi" placeholder="Ví dụ: Hồng">
+  <br>
+  <button onclick="choi();">Bắt đầu chơi</button>
+
+  <p id="diemDaChoi"></p>
+  
+
+  <h2>Bảng điểm</h2>
+  <ul id="bangDiem">
+  </ul>
+
+  <script>
+    
+
+    const diem = [];
+    let tenTamThoi = "";
+    let diemTamThoi = 0;
+
+    function choi() {
+      const ten = document.getElementById("tenNguoiChoi").value.trim();
+      if (ten === "") {
+        alert("Bạn chưa nhập tên!");
+        return;
+      }
+
+      tenTamThoi = ten;
+      
+      //tu viet
+      localStorage.setItem("diem","0");
+      localStorage.setItem("ten",ten);
+
+      if(localStorage.getItem("dsten") == null){
+        var dsten = [];
+        var dsdiem = [];
+        localStorage.setItem("dsten",JSON.stringify(dsten));
+        localStorage.setItem("dsdiem",JSON.stringify(dsdiem));
+      }
+
+      window.location.href = "menu.html";
+      //====
+    }
+
+    
+  </script>
+
+</body>
+</html>

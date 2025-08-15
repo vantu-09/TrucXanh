@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chúc mừng!</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .congrats {
+            font-size: 40px;
+            color: #28a745;
+            animation: pop 1s ease-in-out infinite;
+        }
+        .message {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #333;
+        }
+        .btnext {
+            margin-top: 40px;
+            padding: 12px 24px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .btnext:hover {
+            background-color: #0056b3;
+        }
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="congrats">🎉 CHÚC MỪNG! 🎉</div>
+    <div class="message">Bạn đã vượt qua màn chơi một cách xuất sắc!</div>
+    <button class="btnext" onclick="nextLevel()">Tiếp tục màn tiếp theo</button>
+
+    <script>
+        function nextLevel() {
+            window.location.href = "level8.html";
+        }
+    </script>
+
+</body>
+</html>

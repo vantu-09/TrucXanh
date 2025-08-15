@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" src="../css/ending.css"/>
+<style>
+        body {
+      margin: 0;
+      background-image: linear-gradient(rgba(32, 26, 45, 0.827)),url(../images/background.jpeg);
+background-size: cover;
+
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      
+    }
+
+    .end-menu {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .end-menu h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .end-menu p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+    }
+
+    .end-menu .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .end-menu button {
+      padding: 12px 25px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .play-again {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .play-again:hover {
+      background-color: #218838;
+    }
+
+    .home {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .home:hover {
+      background-color: #0069d9;
+    }
+
+    .exit {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    .exit:hover {
+      background-color: #c82333;
+    }
+</style>
+</head>
+<body>
+<script>
+function thoat(){
+  window.location.href="../index.html"
+}
+function trangchu(){
+  window.location.href="../menu.html"
+}function restart(){
+  window.location.href="level5.html"
+}
+
+
+</script>
+ <div class="end-menu">
+    <h1>Trò chơi kết thúc!</h1>
+    <p>Cảm ơn bạn đã chơi.</p>
+    <div class="buttons">
+      <button class="play-again" onclick="restart()">Chơi lại</button>
+      <button class="home" onclick="trangchu()">Trang chủ</button>
+      <button class="exit" onclick="thoat()">Thoát</button>
+    </div>
+  </div>
+
+<div id="popup" class="popup">
+    <div class="popup-content" id="popupContent">
+    </div>
+</div>
+
+
+        
+        
+    </div>
+</body>
+</html>

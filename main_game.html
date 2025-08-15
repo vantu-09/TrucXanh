@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="main_game_style.css">
+  <script>
+        var totalSeconds = parseInt(localStorage.getItem("time"));
+        function formatTime(sec) {
+            var m = Math.floor(sec / 60);
+            var s = sec % 60;
+            return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+        }
+
+        var timer2 = formatTime(totalSeconds);
+        var score = 3000; // số điểm ban đầu
+        var deductInterval = 300; // số giây mỗi lần trừ điểm
+        var timePassed = 0; // đếm số giây đã qua
+        
+        document.addEventListener("DOMContentLoaded", function () {
+          document.querySelector(".countdown").textContent = timer2;
+          document.querySelector(".score").textContent = score;
+          
+          var interval = setInterval(function () {
+            var parts = timer2.split(':');
+            var minutes = parseInt(parts[0], 10);
+            var seconds = parseInt(parts[1], 10);
+            
+            --seconds;
+            if (seconds < 0) {
+              seconds = 59;
+              minutes--;
+            }
+            
+            if (minutes < 0) {
+              clearInterval(interval);
+              return;
+            }
+            
+            timer2 = (minutes < 10 ? "0" + minutes : minutes) + ":" +
+            (seconds < 10 ? "0" + seconds : seconds);
+
+                document.querySelector('.countdown').textContent = timer2;
+                localStorage.setItem("timer", timer2);
+                
+                timePassed++;
+                if (timePassed % deductInterval === 0 && score > 0) {
+                  score -= 1000;
+                  if (score < 0) score = 0;
+                  document.querySelector('.score').textContent = score;
+                }
+                
+                if (score <= 0) {
+                  score = 0;
+                  document.querySelector('.score').textContent = score;
+                  clearInterval(interval);
+                  
+                  // Load nội dung end.html vào popup
+                  $('#popupContent').load('end.html', function (response, status) {
+                    if (status === "error") {
+                      $('#popupContent').html("<p>Lỗi tải nội dung!</p>");
+                    }
+                    $('#popup').show();
+                  });
+                }
+              }, 1000);
+            });
+            function closePopup() {
+                document.getElementById('popup').style.display = 'none';
+            }
+            
+            </script>
+            <style>
+   body {
+     font-family: Arial, sans-serif;
+     text-align: center;
+     font-size: 24px;
+    }
+   .container {justify-content: center;
+            align-items: center;
+            gap: 20px;
+                 font-size: 80px;    padding: 290px 8%;
+
+          }
+          .countdown {
+            font-weight: bold;
+            color: blue;
+          }
+          .score {
+            font-weight: bold;
+            color: green;
+          }
+
+          /* Ẩn popup mặc định */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+/* Khung popup */
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    width: 350px;
+    margin: 15% auto;
+    border-radius: 8px;
+    text-align: center;
+    animation: fadeIn 0.5s ease, shake 0.5s ease;
+}
+
+/* Hiệu ứng fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Hiệu ứng rung */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+#bt{
+    width: 10vw;
+    height: 15vh;
+    text-align:center;
+    font-size: 5vh;
+    margin: 0.1em;
+    background-color: #F4D35E;
+    border-color: #FAF3E0;
+    color: #4C3A1E; 
+
+    border-style: outset;
+    border-width: 5px;
+    border-radius: 30px;
+    box-shadow:  8px 10px rgba(60, 60, 60, 0.4);
+}
+          </style>
+
+
+
+
+          
+</head>
+<body>
+  <div id = "main">
+
+  
+      <div id = "left">
+           <div class="container">
+        <div class="countdown">00:00</div>
+        <div class="score">3000</div>
+        <button id = "bt" onclick="window.location.href = 'menu.html'">Thoát</button>
+    </div>
+<div></div>
+
+      </div>
+      <!--=======================================-->
+      <div id = "right">
+
+        <div id="khung"></div>
+
+
+      </div>
+
+  </div>
+  
+
+
+<script src="main_game.js"></script>
+<script>
+  var soHang = parseInt(localStorage.getItem("soHang"));
+  var soCot = parseInt(localStorage.getItem("soCot"));
+  var soHinh = parseInt(localStorage.getItem("soHinh"));
+  var mauNen = localStorage.getItem("mauNen");
+  var mauVien = localStorage.getItem("mauVien");
+  var time = parseInt(localStorage.getItem("time"));
+
+  taoDiv(soHang, soCot, mauNen, mauVien,soHinh);
+
+    localStorage.removeItem("soHang");
+    localStorage.removeItem("soCot");
+    localStorage.removeItem("soHinh");
+    localStorage.removeItem("mauNen");
+    localStorage.removeItem("mauVien");
+    localStorage.removeItem("time");
+    
+   
+</script>
+
+
+</body>
+</html>

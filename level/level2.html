@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script>
+
+        var timer2 = "14:00"; // thời gian ban đầu
+        var score = 1000; // số điểm ban đầu
+        var deductInterval = 300; // số giây mỗi lần trừ điểm
+        var timePassed = 0; // đếm số giây đã qua
+
+        var interval = setInterval(function () {
+            var timer = timer2.split(':');
+            var minutes = parseInt(timer[0], 10);
+            var seconds = parseInt(timer[1], 10);
+
+            --seconds;
+            minutes = (seconds < 0) ? --minutes : minutes;
+            if (minutes < 0) clearInterval(interval);
+            seconds = (seconds < 0) ? 59 : seconds;
+            seconds = (seconds < 10) ? '0' + seconds : seconds;
+
+            // Cập nhật đồng hồ
+            document.querySelector('.countdown').textContent = minutes + ':' + seconds;
+            timer2 = minutes + ':' + seconds;
+
+            // Tính thời gian đã qua
+            timePassed++;
+            if (timePassed % deductInterval === 0 && score > 0) {
+                score -= 400;
+                document.querySelector('.score').textContent = score;
+            }
+            if (score <= 0) {
+        score = 0;
+        document.querySelector('.score').textContent = score;
+        clearInterval(interval);
+
+        // Load nội dung từ end.html vào popup (dùng jQuery)
+$('#popupContent').load('end.html', function(response, status, xhr) {
+    if (status === "error") {
+        $('#popupContent').html("<p>Lỗi tải nội dung!</p>");
+    }
+    $('#popup').show();
+});
+
+    }
+}, 1000);
+
+//  đóng popup
+function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+}
+    
+    </script>
+ <style>
+   body {
+     font-family: Arial, sans-serif;
+     text-align: center;
+     font-size: 24px;
+            background-color: rgb(0, 0, 0);
+
+    }
+    .container {justify-content: center;
+            align-items: center;
+            gap: 20px;    
+            padding: 290px 8%;
+
+                 font-size: 80px;
+          
+          }
+          .countdown {
+            font-weight: bold;
+            color: blue;
+          }
+          .score {
+            font-weight: bold;
+            color: rgb(236, 20, 20);
+          }
+
+          /* Ẩn popup mặc định */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+/* Khung popup */
+.popup-content {
+    background: #fff;
+    padding: 20px;
+    width: 350px;
+    margin: 15% auto;
+    border-radius: 8px;
+    text-align: center;
+    animation: fadeIn 0.5s ease, shake 0.5s ease;
+}
+
+/* Hiệu ứng fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Hiệu ứng rung */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+#bt{
+    width: 10vw;
+    height: 15vh;
+    text-align:center;
+    font-size: 5vh;
+    margin: 0.1em;
+    background-color: #F4D35E;
+    border-color: #FAF3E0;
+    color: #4C3A1E; 
+
+    border-style: outset;
+    border-width: 5px;
+    border-radius: 30px;
+    box-shadow:  8px 10px rgba(60, 60, 60, 0.4);
+}
+          </style>
+
+
+
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../main_game_style.css">
+  
+</head>
+<body>
+    <div id = "main">
+      <div id = "left">
+
+ <div class="container">
+        <div class="countdown">14:00</div>
+        <div class="score">1000</div>
+        <button id = "bt" onclick="window.location.href = '../menu.html'">Thoát</button>
+    </div>
+<div></div>
+      </div>
+      <!--=======================================-->
+      <div id = "right">
+        <div id="khung"></div>
+      </div>
+  </div>
+  <div id="popup" class="popup">
+    <div class="popup-content" id="popupContent">
+    </div>
+</div>
+
+  
+
+
+<script src="level2.js"></script>
+
+
+
+</body>
+</html>
+</body>
+</html>
